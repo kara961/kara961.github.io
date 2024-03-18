@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        #envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 50px auto;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        #envelope:hover img {
+            animation: shake 0.5s infinite alternate;
+        }
+
+        #envelope img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-10px);
+            }
+        }
+
+        #message {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        #response {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.5s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn.no:hover,
+        .btn.yes:hover {
+            animation: jump 0.5s infinite alternate;
+        }
+
+        @keyframes jump {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .chat-bubble {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(76, 175, 80, 0); /* Fully transparent */
+            color: black; /* Text color set to black */
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="envelope" onclick="showMessage()">
+        <img src="https://www.animatedimages.org/data/media/202/animated-dog-image-0377.gif" border="0" alt="animated-dog-image-0377">
+    </div>
+    <div id="message">Vishal is saying sorry. Are you going to forgive him for what he did yesterday?</div>
+    <div id="response">
+        <button class="btn yes" onclick="recordResponse('yes')">Yes</button>
+        <button class="btn no" onclick="recordResponse('no')">No</button>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            var envelope = document.getElementById('envelope');
+            var chatBubble = document.createElement('div');
+            chatBubble.className = 'chat-bubble';
+            chatBubble.innerText ='patt me to reveal the message!';
+            chatBubble.onclick = showMessage;
+            envelope.appendChild(chatBubble);
+        }, 8000);
+
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('response').style.display = 'block';
+            var chatBubble = document.querySelector('.chat-bubble');
+            if (chatBubble) {
+                chatBubble.style.display = 'none';
+            }
+        }
+
+        function recordResponse(response) {
+            if (response === 'yes') {
+                window.location.href = 'yes.php'; // Redirect to yes.php
+            } else if (response === 'no') {
+                window.location.href = 'no.php'; // Redirect to no.php
+            }
+        }
+    </script>
+</body>
+</html>
