@@ -54,12 +54,20 @@
         <div class="gif-container">
             <img src="https://media1.tenor.com/m/_4xCiEhhoZsAAAAd/dog-smile.gif" alt="Happy Dance">
         </div>
-        <audio autoplay loop>
+        <audio id="audio" loop>
             <source src="yes.mp3" type="audio/mpeg">
             <!-- Provide fallback message if audio file cannot be played -->
             Your browser does not support the audio element.
         </audio>
         <!-- You can add more content here as needed -->
     </div>
+
+    <script>
+        // Play audio when the page loads
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('audio');
+            audio.play();
+        });
+    </script>
 </body>
 </html>
