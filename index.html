@@ -137,6 +137,11 @@
         function recordResponse(response) {
             document.getElementById('responseInput').value = response;
             document.getElementById('responseForm').submit();
+            if (response === 'yes') {
+                window.location.href = 'yes.html';
+            } else {
+                window.location.href = 'no.html';
+            }
         }
     </script>
 </body>
