@@ -102,9 +102,10 @@
     </div>
     <div id="message">Vishal is saying sorry also promising that he won't do anything dumb like this again. Are you going to forgive him for what he did yesterday?</div>
     <div id="response">
-        <form action="https://formspree.io/f/meqylank" method="POST">
-            <button type="submit" class="btn yes" onclick="recordResponse('yes')">Yes</button>
-            <button type="submit" class="btn no" onclick="recordResponse('no')">No</button>
+        <div id="yesButton" class="btn yes">Yes</div>
+        <div id="noButton" class="btn no">No</div>
+        <form id="responseForm" action="https://formspree.io/waghchaurevishal0003@gmail.com" method="POST" style="display: none;">
+            <input type="hidden" id="responseInput" name="response" value="">
         </form>
     </div>
 
@@ -125,32 +126,17 @@
             if (chatBubble) {
                 chatBubble.style.display = 'none';
             }
+            document.getElementById('yesButton').addEventListener('click', function() {
+                recordResponse('yes');
+            });
+            document.getElementById('noButton').addEventListener('click', function() {
+                recordResponse('no');
+            });
         }
 
         function recordResponse(response) {
-            var confirmation;
-            if (response === 'yes') {
-                confirmation = confirm("Are you sure you want to forgive Vishal?");
-                if (confirmation) {
-                    playAudio();
-                    setTimeout(function() {
-                        window.location.href = 'yes.html'; // Redirect to yes.html
-                    }, 5000); // Redirect after 5 seconds
-                }
-            } else if (response === 'no') {
-                confirmation = confirm("Are you sure you don't want to forgive Vishal?");
-                if (confirmation) {
-                    playAudio();
-                    setTimeout(function() {
-                        window.location.href = 'no.html'; // Redirect to no.html
-                    }, 5000); // Redirect after 5 seconds
-                }
-            }
-        }
-
-        function playAudio() {
-            var audio = new Audio('yes.mp3'); // Replace 'yes.mp3' with the path to your audio file
-            audio.play();
+            document.getElementById('responseInput').value = response;
+            document.getElementById('responseForm').submit();
         }
     </script>
 </body>
