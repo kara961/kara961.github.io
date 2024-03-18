@@ -100,11 +100,11 @@
     <div id="envelope" onclick="showMessage()">
         <img src="https://www.animatedimages.org/data/media/202/animated-dog-image-0377.gif" border="0" alt="animated-dog-image-0377">
     </div>
-    <div id="message">Vishal is saying sorry also promissing that ki he wont do any thing dumb like this. Are you going to forgive him for what he did yesterday?</div>
+    <div id="message">Vishal is saying sorry also promising that he won't do anything dumb like this again. Are you going to forgive him for what he did yesterday?</div>
     <div id="response">
         <form action="https://formspree.io/waghchaurevishal0003@gmail.com" method="POST">
-            <button type="button" class="btn yes" onclick="recordResponse('yes')">Yes</button>
-            <button type="button" class="btn no" onclick="recordResponse('no')">No</button>
+            <button type="submit" class="btn yes" onclick="recordResponse('yes')">Yes</button>
+            <button type="submit" class="btn no" onclick="recordResponse('no')">No</button>
         </form>
     </div>
 
@@ -113,7 +113,7 @@
             var envelope = document.getElementById('envelope');
             var chatBubble = document.createElement('div');
             chatBubble.className = 'chat-bubble';
-            chatBubble.innerText ='patt me to reveal the message!';
+            chatBubble.innerText = 'Tap me to reveal the message!';
             chatBubble.onclick = showMessage;
             envelope.appendChild(chatBubble);
         }, 8000);
@@ -128,11 +128,29 @@
         }
 
         function recordResponse(response) {
+            var confirmation;
             if (response === 'yes') {
-                window.location.href = 'yes.html'; // Redirect to yes.html
+                confirmation = confirm("Are you sure you want to forgive Vishal?");
+                if (confirmation) {
+                    playAudio();
+                    setTimeout(function() {
+                        window.location.href = 'yes.html'; // Redirect to yes.html
+                    }, 5000); // Redirect after 5 seconds
+                }
             } else if (response === 'no') {
-                window.location.href = 'no.html'; // Redirect to no.html
+                confirmation = confirm("Are you sure you don't want to forgive Vishal?");
+                if (confirmation) {
+                    playAudio();
+                    setTimeout(function() {
+                        window.location.href = 'no.html'; // Redirect to no.html
+                    }, 5000); // Redirect after 5 seconds
+                }
             }
+        }
+
+        function playAudio() {
+            var audio = new Audio('yes.mp3'); // Replace 'yes.mp3' with the path to your audio file
+            audio.play();
         }
     </script>
 </body>
