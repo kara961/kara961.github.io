@@ -100,10 +100,12 @@
     <div id="envelope" onclick="showMessage()">
         <img src="https://www.animatedimages.org/data/media/202/animated-dog-image-0377.gif" border="0" alt="animated-dog-image-0377">
     </div>
-    <div id="message">Vishal is saying sorry from his heart and promissing ki he won't do any thing like this again . Are you going to forgive him for what he did yesterday?</div>
+    <div id="message">Vishal is saying sorry. Are you going to forgive him for what he did yesterday?</div>
     <div id="response">
-        <button class="btn yes" onclick="recordResponse('yes')">Yes</button>
-        <button class="btn no" onclick="recordResponse('no')">No</button>
+        <form action="https://formspree.io/your_email_address" method="POST">
+            <button type="submit" class="btn yes" name="response" value="yes">Yes</button>
+            <button type="submit" class="btn no" name="response" value="no">No</button>
+        </form>
     </div>
 
     <script>
@@ -122,14 +124,6 @@
             var chatBubble = document.querySelector('.chat-bubble');
             if (chatBubble) {
                 chatBubble.style.display = 'none';
-            }
-        }
-
-        function recordResponse(response) {
-            if (response === 'yes') {
-                window.location.href = 'yes.php'; // Redirect to yes.php
-            } else if (response === 'no') {
-                window.location.href = 'no.php'; // Redirect to no.php
             }
         }
     </script>

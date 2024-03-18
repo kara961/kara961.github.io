@@ -1,21 +1,10 @@
-<?php
-$response = 'yes'; // Set the response to "yes"
 
-$ip = $_SERVER['REMOTE_ADDR']; // Get the IP address of the client
-
-// Save the IP address and response to a file named "response"
-$file = fopen("response.txt", "a"); // Open the file in append mode
-fwrite($file, "IP: $ip - Response: $response\n"); // Write IP and response to the file
-fclose($file); // Close the file
-
-// Display the content to the user (you can customize this)
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yes Page</title>
+    <title>No Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,17 +49,14 @@ fclose($file); // Close the file
 </head>
 <body>
     <div class="container">
-        <h1>Thank you for forgiving Vishal!</h1>
-        <p>You're awesome!</p>
-        
-        <div class="gif-container">
-            <img src="https://media1.tenor.com/m/_4xCiEhhoZsAAAAd/dog-smile.gif" alt="Happy Dance">
-        </div>
-        <audio autoplay loop>
-            <source src="yes.mp3" type="audio/mpeg">
-            Your browser does not support the audio element!.
+        <h1>Sorry to hear that you're not forgiving Vishal...</h1>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDZnZDhhbDV0eDQ4dDFxaWZkb3lkaTJqNzM2Z3Jicmhkdzd1M2p3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dIsQjjXQ1YAbjV2opK/giphy.gif" alt="Sad Dog">
+    </div>
+    <div>
+    <audio autoplay loop>
+            <source src="no.m4a" type="audio/mpeg">
+            Your browser does not support the audio element.
         </audio>
-        <!-- You can add more content here as needed -->
     </div>
 </body>
 </html>
